@@ -1,0 +1,156 @@
+{
+  "dataset": "SYNTHETIC_SIMULATION: not actual market observations",
+  "data_window": [
+    "2019-01-02",
+    "2025-12-31"
+  ],
+  "tickers": [
+    "ALFA",
+    "BRVO",
+    "CRST",
+    "DURA",
+    "ECHO",
+    "FLUX",
+    "GLDN",
+    "HARB"
+  ],
+  "price_rows": 14608,
+  "corporate_actions": 233,
+  "validation": {
+    "required_columns": true,
+    "no_duplicates": true,
+    "non_null_keys": true,
+    "positive_prices": true,
+    "nonnegative_volume": true,
+    "valid_actions": true,
+    "ordered_per_asset": true,
+    "synthetic_provenance": true,
+    "aligned_calendar": true,
+    "no_absurd_dividends": true,
+    "sufficient_history": true
+  },
+  "sql_audit": {
+    "cache_rows": 14608,
+    "sql_missing_asset_days": 0,
+    "sql_unmatched_actions": 0,
+    "cache_file": "data/processed/research_cache.sqlite"
+  },
+  "methodology": {
+    "warmup": "2019-2020",
+    "development": "2021-2022",
+    "holdout": "2023-2025",
+    "signal": "63-session total return momentum, 21-session volatility and 20-session median dollar volume, lagged two sessions for execution timing",
+    "rebalance": "monthly target weights applied to first business-day return with prior close execution; risky holdings drift between rebalances",
+    "portfolio": "top 3 liquid names, inverse-volatility weights capped at 50%; cash when insufficient",
+    "cost": "10 bps per unit of gross absolute turnover",
+    "benchmark": "daily equal-weighted asset basket; informational, not tradeable net of fees",
+    "dividend_splits": "split- and dividend-aware simple returns",
+    "note": "Synthetic research demonstration; not an investment recommendation"
+  },
+  "development": {
+    "strategy_net": {
+      "total_return_pct": -0.98,
+      "cagr_pct": -0.48,
+      "volatility_pct": 14.93,
+      "sharpe_0rf": 0.04,
+      "max_drawdown_pct": -21.4,
+      "win_day_pct": 51.82,
+      "observations": 521
+    },
+    "benchmark": {
+      "total_return_pct": 0.98,
+      "cagr_pct": 0.47,
+      "volatility_pct": 12.72,
+      "sharpe_0rf": 0.1,
+      "max_drawdown_pct": -14.32,
+      "win_day_pct": 50.67,
+      "observations": 521
+    },
+    "strategy_gross": {
+      "total_return_pct": 0.79,
+      "cagr_pct": 0.38,
+      "volatility_pct": 14.95,
+      "sharpe_0rf": 0.1,
+      "max_drawdown_pct": -20.79,
+      "win_day_pct": 51.82,
+      "observations": 521
+    }
+  },
+  "holdout": {
+    "strategy_net": {
+      "total_return_pct": -31.33,
+      "cagr_pct": -11.39,
+      "volatility_pct": 14.73,
+      "sharpe_0rf": -0.75,
+      "max_drawdown_pct": -40.21,
+      "win_day_pct": 47.64,
+      "observations": 783
+    },
+    "benchmark": {
+      "total_return_pct": -31.22,
+      "cagr_pct": -11.35,
+      "volatility_pct": 13.09,
+      "sharpe_0rf": -0.85,
+      "max_drawdown_pct": -35.1,
+      "win_day_pct": 47.51,
+      "observations": 783
+    },
+    "strategy_gross": {
+      "total_return_pct": -29.32,
+      "cagr_pct": -10.57,
+      "volatility_pct": 14.73,
+      "sharpe_0rf": -0.68,
+      "max_drawdown_pct": -39.08,
+      "win_day_pct": 47.64,
+      "observations": 783
+    }
+  },
+  "cost_sensitivity": {
+    "0_bps": {
+      "total_return_pct": -29.32,
+      "cagr_pct": -10.57,
+      "volatility_pct": 14.73,
+      "sharpe_0rf": -0.68,
+      "max_drawdown_pct": -39.08,
+      "win_day_pct": 47.64,
+      "observations": 783
+    },
+    "10_bps": {
+      "total_return_pct": -31.33,
+      "cagr_pct": -11.39,
+      "volatility_pct": 14.73,
+      "sharpe_0rf": -0.75,
+      "max_drawdown_pct": -40.21,
+      "win_day_pct": 47.64,
+      "observations": 783
+    },
+    "25_bps": {
+      "total_return_pct": -34.24,
+      "cagr_pct": -12.62,
+      "volatility_pct": 14.74,
+      "sharpe_0rf": -0.84,
+      "max_drawdown_pct": -41.86,
+      "win_day_pct": 47.38,
+      "observations": 783
+    },
+    "50_bps": {
+      "total_return_pct": -38.83,
+      "cagr_pct": -14.63,
+      "volatility_pct": 14.79,
+      "sharpe_0rf": -1.0,
+      "max_drawdown_pct": -44.51,
+      "win_day_pct": 46.74,
+      "observations": 783
+    }
+  },
+  "uncertainty": {
+    "median_cagr_spread_pp": 0.07,
+    "ci_95_pp": [
+      -10.9,
+      9.71
+    ],
+    "prob_outperform_bootstrap_pct": 50.6
+  },
+  "holdout_total_turnover": 28.805,
+  "holdout_rebalance_count": 36
+}
